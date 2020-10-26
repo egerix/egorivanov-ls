@@ -79,7 +79,7 @@ block content
                         .values__widget-container
                             -
                                 var skillsCategories = [
-                                    ["Frontend", ["Html", "CSS", "Javascript", "Vue.js"]],
+                                    ["Front-end", ["HTML5", "CSS3", "Javascript", "Vue.js"]],
                                     ["Workflow", ["GIT", "Terminal", "Gulp", "Webpack"]]
                                 ];
 
@@ -107,14 +107,14 @@ block content
                         .works-slider__pics(data-slide="1")
                             .works-slider__pics-content
                                 +image('content/slider-1-full.jpg', 'works-slider__fullpic')
+                                ul.works-slider__thumbs
+                                    - for (var i = 4; i > 0; i--)
+                                        li.works-slider__thumb-item(class=`${i === 1 ? 'active' : ''}`)
+                                            a(href="#").works-slider__thumb-link
+                                                +image(`content/slider-${i}.jpg`, 'works-slider__thumb')
                                 .works-slider__buttons
                                     a(href="#").works-slider__btn.works-slider__btn_next
                                     a(href="#").works-slider__btn.works-slider__btn_prev
-                                ul.works-slider__thumbs
-                                    - for (var i = 3; i > 0; i--)
-                                    li.works-slider__thumb-item(class=`${i === 1 ? 'active' : ''}`)
-                                        a(href="#").works-slider__thumb-link
-                                            +image(`content/slider-${i}.jpg`, 'works-slider__thumb')
                         .works-slider__data
                             ul.works-slider__tags
                                 - var tags = ['HTML', 'CSS', 'JavaScript'];
@@ -177,7 +177,7 @@ block content
                     .footer__copyright-year &copy; 2020
                 .footer__copyright-userinfo
                     .footer__copyright-name Егор #[br] Иванов
-                    .footer__data-text Личный сайт #[br] веб - разработчика
+                    .footer__data-text--gray Личный сайт #[br] веб - разработчика
             .footer__data
                 nav.menu.menu--color-white.footer__data-menu
                     ul.menu__list
