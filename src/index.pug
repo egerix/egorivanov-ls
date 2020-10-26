@@ -31,32 +31,34 @@ block content
                         a(href="#").scroll-down__btn Скролл
 
         section.about
-            .container
-                .about__columns
-                    .about__user
-                        .user
-                            .user__avatar
-                                .user__avatar-wrapper
-                                    +image('content/user.jpg', 'user__avatar-pic')
-                            .user__about
-                                -
-                                    var userinfo = [
-                                        ['Проживаю:', "Санкт-Петербург"],
-                                        ['Возраст:', "30 лет"],
-                                        ['Родился:', "23 июня 1990"],
-                                    ];
-                                table.user__table
-                                    each item in userinfo
-                                        tr.user__table-row
-                                            td.user__table-title #{item[0]}
-                                            td.user__table-content #{item[1]}
-                    .about__user-text
-                        .about__main-text-content
-                            .about__desc Привет, меня зовут
-                            .about__title Егор Иванов
-                            .about__text-info
-                                p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                        .about__ps
+            .container.about__container
+                .about__user
+                    .user
+                        .user__avatar
+                            .user__avatar-wrapper
+                                +image('content/user.jpg', 'user__avatar-pic')
+                        .user__about
+                            -
+                                var userinfo = [
+                                    ['Проживаю:', "Санкт-Петербург"],
+                                    ['Возраст:', "30 лет"],
+                                    ['Родился:', "23 июня 1990"],
+                                ];
+                            table.user__table
+                                each item in userinfo
+                                    tr
+                                        td.user__table-title #{item[0]}
+                                        td.user__table-content #{item[1]}
+                .about__user-text
+                    .about__main-text-content
+                        .about__desc Привет, меня зовут
+                        .about__title Егор Иванов
+                        .about__text-info
+                            p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                    .about__ps
+                        .about__ps-star
+                            +icon("star", 'about__ps-star-pic')
+                        .about__ps-text
                             | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
     .triangles.triangles_top
@@ -110,9 +112,9 @@ block content
                                     a(href="#").works-slider__btn.works-slider__btn_prev
                                 ul.works-slider__thumbs
                                     - for (var i = 3; i > 0; i--)
-                                        li.works-slider__thumb-item(class=`${i === 1 ? 'active' : ''}`)
-                                            a(href="#").works-slider__thumb-link
-                                                +image(`content/slider-${i}.jpg`, 'works-slider__thumb')
+                                    li.works-slider__thumb-item(class=`${i === 1 ? 'active' : ''}`)
+                                        a(href="#").works-slider__thumb-link
+                                            +image(`content/slider-${i}.jpg`, 'works-slider__thumb')
                         .works-slider__data
                             ul.works-slider__tags
                                 - var tags = ['HTML', 'CSS', 'JavaScript'];
