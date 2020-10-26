@@ -1,9 +1,12 @@
 .menu__list {
     display: flex;
     justify-content: center;
+    color: $text-color;
 }
 
 .menu__item {
+    font-size: 16px;
+    line-height: 22px;
     margin-right: 60px;
 
     &:last-child {
@@ -11,8 +14,7 @@
     }
 
     &:hover {
-        font-weight: 600;
-        color: $black-text-hover;
+        text-shadow: 0 0 1px, 0 0 1px;
     }
 }
 
@@ -23,6 +25,7 @@
 
 .menu--color-white {
     color: #fff;
+
     .menu__item {
         &:hover {
             font-weight: 600;

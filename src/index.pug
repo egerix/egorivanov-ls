@@ -16,15 +16,15 @@ block content
                                         a(href="#").menu__link #{item}
                     .header__buttons
                         ul.socials
-                            - var socials = ['insta', 'vk', 'github', 'envelope'];
-                            each item in socials
-                                li.socials__item
-                                    a(href=`${item === 'envelope' ? 'mailto:egerix@mail.ru' : '#'}`).socials__link
-                                        +icon(item, 'socials__icon')
+                            - var socials = ['insta', 'github', 'vk', 'envelope'];
+                                each item in socials
+                                    li.socials__item
+                                        a(href=`${item === 'envelope' ? 'mailto:egerix@mail.ru' : '#'}`).socials__link
+                                            +icon(item, 'socials__icon')
 
                 .hero__content
                     .userinfo
-                        .userinfo__title Личный сайт #[span.userinfo__occ веб разработчика]
+                        .userinfo__title Личный сайт #[br] веб разработчика
                         .userinfo__name Егор #[br] Иванов
                 .hero__downbutton
                     .scroll-down
