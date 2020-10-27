@@ -1,0 +1,33 @@
+.menu__list {
+    display: flex;
+    justify-content: center;
+    color: $text-color;
+}
+
+.menu__item {
+    font-size: 16px;
+    line-height: 22px;
+    margin-right: 60px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        text-shadow: 0 0 1px, 0 0 1px;
+    }
+}
+
+.menu__link {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu--color-white {
+    .menu__item {
+        color: #fff;
+        &:hover {
+            text-shadow: 0 0 1px, 0 0 1px;
+        }
+    }
+}
