@@ -1,12 +1,25 @@
+.reviews {
+    @include tablets {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
 .reviews__header {
     display: flex;
     align-items: center;
-    margin-bottom: 95px;
+    margin-bottom: 5vh;
 }
 
-.reviews__title.section-title {
-    margin-bottom: 0;
+.reviews__title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
     margin-right: 10%;
+    @include phones {
+        font-size: 24px;
+        line-height: 33px;
+    }
 }
 
 .reviews__buttons {

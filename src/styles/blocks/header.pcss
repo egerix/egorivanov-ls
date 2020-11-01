@@ -2,4 +2,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &__menu {
+    @include tablets {
+      display: none;
+    }
+  }
+
+  &__socials {
+
+    @include tablets {
+      flex-grow: 3;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @include phones {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include tablets {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 }

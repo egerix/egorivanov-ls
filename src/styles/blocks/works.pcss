@@ -1,3 +1,22 @@
-.works__container {
-  padding: 0 160px 0px 160px;
+.works__content {
+    display: flex;
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+.works__title {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 49px;
+  padding-bottom: 80px;
+}
+
+.works__slider {
+    flex-grow: 4;
+}
+
+.works__info {
+    flex-grow: 1;
 }

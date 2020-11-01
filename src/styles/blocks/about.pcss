@@ -1,62 +1,90 @@
-.about__container {
-    display: flex;
-    justify-content: center;
-    padding: 169px 0 268px;
-}
-
-.about__user {
-    width: 20%;
-}
-
-.about__user-text {
-    width: 35%;
-    color: rgba($text-color, .5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-
-.about__desc {
+.about {
     font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 21px;
-    color: rgba($text-color, .8);
-}
 
-.about__title {
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 49px;
-    margin-bottom: 31px;
-    color: $text-color;
-}
+    @include tablets {
+        font-size: 14px;
+    }
 
-.about__text-info {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: rgba($text-color, .8);
-}
+    &__container {
+        display: flex;
+        justify-content: center;
+        padding: 169px 0 268px;
 
-.about__main-text-content {
-    padding-left: 49px;
-}
+        @include desktop {
+            justify-content: flex-start;
+        }
 
-.about__ps {
-    display: flex;
-}
+        @include phones {
+            flex-direction: column;
+        }
+    }
 
-.about__ps-text {
-    font-style: italic;
-    font-size: 16px;
-    line-height: 30px;
-    color: rgba($text-color, .8);
-}
+    &__user {
+        flex-basis: 20vw;
+        padding-right: 5vw;
+        @include phones {
+            padding-bottom: 45px;
+        }
+    }
 
-.about__ps-star-pic {
-    width: 23px;
-    height: 23px;
-    margin-right: 26px;
-    fill: #db0200;
+    &__user-text {
+        max-width: 600px;
+        color: rgba($text-color, .5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__desc {
+        line-height: 22px;
+        margin-bottom: 21px;
+        color: rgba($text-color, .8);
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 49px;
+        margin-bottom: 31px;
+        color: $text-color;
+    }
+
+    &__text-info {
+        font-weight: 600;
+        line-height: 24px;
+        padding-bottom: 36px;
+        color: rgba($text-color, .8);
+    }
+
+    &__main-text-content {
+        padding-left: 49px;
+        @include phones {
+            padding-left: 25px;
+        }
+    }
+
+    &__ps {
+        display: flex;
+    }
+
+    &__ps-text {
+        font-style: italic;
+        line-height: 30px;
+        color: rgba($text-color, .8);
+        @include phones {
+            line-height: 24px;
+        }
+    }
+
+    &__ps-star-pic {
+        width: 23px;
+        height: 23px;
+        margin-right: 26px;
+        fill: #db0200;
+        @include phones {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+        }
+    }
 }

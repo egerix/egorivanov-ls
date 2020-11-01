@@ -1,19 +1,37 @@
 .quote {
-  padding-left: 24%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: space-between;
+  padding-left: 24%;
+
 
   &:before {
     content: "";
-    display: block;
     width: 18%;
     height: 37%;
-    background: svg-load('quote.svg', fill='#DDE3EC') center center / contain no-repeat;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
+    background: svg-load('quote.svg', fill=rgba($text-color, .05)) center center / contain no-repeat;
+
+    @include tablets {
+      width: 30px;
+      height: 26px;
+    }
+  }
+  @include tablets {
+    padding-left: 40px;
+  }
+
+  @include phones {
+    padding-left: 0;
+
+    &:before {
+      display: none;
+    }
   }
 }
 
@@ -23,4 +41,8 @@
   color: rgba($text-color, .6);
   font-weight: 600;
   line-height: 30px;
+  @include tablets {
+    font-size: 14px;
+    line-height: 24px;
+  }
 }

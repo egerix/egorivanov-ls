@@ -1,73 +1,112 @@
 .footer {
-  background: #1f232d;
+    background: #1f232d;
+    font-size: 16px;
+    line-height: 30px;
+    @include tablets {
+        font-size: 14px;
+        line-height: 24px;
+    }
 }
 
 .footer__container {
-  display: flex;
-  justify-content: space-around;
-  padding: 62px 201px 90px 161px;
+    display: flex;
+    justify-content: space-around;
+    padding: 62px 0 90px 0;
+    @include phones {
+        flex-direction: column;
+    }
 }
 
 .footer__copyright {
-  width: 25%;
-  display: flex;
-  color: rgba(#fff, .1);
-  justify-content: flex-start;
+    width: 30%;
+    display: flex;
+    color: rgba(#fff, .1);
+    justify-content: flex-start;
+    @include desktop {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    @include phones{
+        width: 100%;
+        padding-bottom: 44px;
+    }
 }
 
 .footer__copyright-col {
-  flex: 1;
+    flex: 1;
+    @include desktop {
+        flex: 0
+    }
+    @include phones{
+        padding-bottom: 24px;
+    }
 }
 
 .footer__copyright-userinfo {
-  padding-top: 9px;
+    padding-top: 9px;
 }
 
 .footer__copyright-name {
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  color: #fff;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
 }
 
 .footer__copyright-year {
-  color: #464E62;
-  font-weight: 600;
-  font-size: 48px;
-  white-space: nowrap;
+    color: #464E62;
+    font-weight: 600;
+    font-size: 48px;
+    white-space: nowrap;
 }
 
 .footer__data-text {
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 30px;
-  padding-bottom: 40px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 30px;
+    padding-bottom: 40px;
 }
 
 .footer__data {
-  width: 60%;
-  padding-top: 7px;
+    width: 60%;
+    padding-top: 7px;
+    @include phones {
+        width: 100%;
+    }
 }
 
 .footer__data-menu {
-  display: flex;
-  margin-bottom: 48px;
+    display: flex;
+    margin-bottom: 48px;
+    @include phones {
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
 
 .footer__data-content {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .footer__data-col {
-  width: 46%;
+    width: 46%;
+    @include tablets {
+        width: 100%
+    }
 }
 
 .footer__data-text--gray {
-  color: #464E62;
+    color: #464E62;
 }
 
 .footer__data-socials {
-  color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.45);
+    @include tablets {
+        padding-bottom: 50px;
+    }
 }
