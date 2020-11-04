@@ -1,7 +1,6 @@
 .footer {
     background: #1f232d;
     font-size: 16px;
-    line-height: 30px;
     @include tablets {
         font-size: 14px;
         line-height: 24px;
@@ -33,7 +32,6 @@
 }
 
 .footer__copyright-col {
-    flex: 1;
     @include desktop {
         flex: 0
     }
@@ -43,7 +41,9 @@
 }
 
 .footer__copyright-userinfo {
-    padding-top: 9px;
+    padding-left: 56px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer__copyright-name {
@@ -59,6 +59,8 @@
     color: #464E62;
     font-weight: 600;
     font-size: 48px;
+    line-height: 48px;
+
     white-space: nowrap;
 }
 

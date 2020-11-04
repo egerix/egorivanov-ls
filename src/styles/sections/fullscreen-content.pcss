@@ -1,0 +1,28 @@
+ .fullscreen-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    @include tablets {
+        justify-content: flex-start;
+    }
+ }
+
+.fullscreen-content__header {
+    padding-top: 60px;
+}
+
+.fullscreen-content__hero {
+    @include tablets {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+}
+
+.fullscreen-content__scroll {
+    height: 6vh;
+    @include tablets {
+        display: none;
+    }
+}
