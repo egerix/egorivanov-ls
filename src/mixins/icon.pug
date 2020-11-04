@@ -1,0 +1,4 @@
+mixin icon(name, className)
+    - var icon = require(`./images/icons/${name}.svg`).default;
+    svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
+        use(xlink:href=`sprite.svg#${icon.id.replace('-usage', '')}`)

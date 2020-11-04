@@ -1,0 +1,27 @@
+-
+    var reviewers = [
+        {
+            "text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+            "name": "Ковальчук Дмитрий",
+            "occ": "Основатель Loftschool",
+            "imgName": "Dmitriy"
+        },
+        {
+            "text": "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+            "name": "Владимир Сабанцев",
+            "occ": "Преподаватель",
+            "imgName": "Vladimir"
+        }
+    ]
+
+mixin reviews
+    .reviews
+        .reviews__header
+            .reviews__title Что обо мне говорят
+            .reviews__buttons
+                .reviews__btn.reviews__btn_prev
+                .reviews__btn.reviews__btn_next
+        ul.reviews__content
+            each reviewer in reviewers
+                li.reviews__content-item
+                    +quote(reviewer)

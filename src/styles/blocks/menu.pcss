@@ -23,16 +23,6 @@
     white-space: nowrap;
 }
 
-.menu--color-white {
-    .menu__item {
-        color: #fff;
-
-        &:hover {
-            text-shadow: 0 0 1px, 0 0 1px;
-        }
-    }
-}
-
 .menu--footer {
     .menu__list {
         @include phones {
@@ -41,6 +31,10 @@
     }
 
     .menu__item {
+        color: #fff;
+        &:hover {
+            text-shadow: 0 0 1px, 0 0 1px;
+        }
         @include phones {
             width: 50%;
             font-size: 16px;

@@ -1,0 +1,7 @@
+mixin skills-row(title, skills)
+    .skills-row
+        .skills-row__title #{title}
+        ul.skills-row__list
+            each skill in skills
+                li.skills-row__item
+                +skill(skill)
