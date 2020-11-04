@@ -1,9 +1,0 @@
-mixin skill(name)
-    .skill
-        svg(viewBox="0 0 100 100").skill__circle-shape
-            circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
-            circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above
-            linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                stop(offset="0%" stop-color="#4a00ed")
-                stop(offset="100%" stop-color="#7c00ea")
-        .skill__circle-text #{name}

@@ -7,8 +7,6 @@ include ./mixins/burger
 include ./mixins/scroll-down
 include ./mixins/user
 include ./mixins/triangles
-include ./mixins/skill
-include ./mixins/skills
 include ./mixins/thumbnails
 include ./mixins/works-slider
 include ./mixins/tags
@@ -17,7 +15,6 @@ include ./mixins/quote
 include ./mixins/reviews
 include ./mixins/text-quote
 include ./mixins/logo
-include ./mixins/skills-row
 include ./mixins/reviewer
 
 doctype html
@@ -74,7 +71,7 @@ html(lang="en")
                                     p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                             .values__skills
                                 .values__skills-container
-                                    +skills
+                                    #skills-component
                 section.works#works
                     .container.works__container
                         .works__title Мои работы
@@ -109,3 +106,5 @@ html(lang="en")
                                     +socials("round-borders")
                             .footer__data-col
                                 +text-quote
+
+        include ./templates/entry
