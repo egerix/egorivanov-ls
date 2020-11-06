@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+console.log('this is the skills module');
+
 const skillsItem = {
     props: ["skill"],
     template: "#skills-item",

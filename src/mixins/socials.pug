@@ -1,9 +1,15 @@
-- var socials = ['insta', 'github', 'vk', 'envelope'];
+-
+    var socials = [
+        ['insta', "https://www.instagram.com/"],
+        ['github', "https://egerix.github.io"],
+        ['vk', "https://www.instagram.com"],
+        ['envelope', "mailto:egerix@mail.ru"]
+    ]
 
 mixin socials(mod)
     -var socialsClass = mod === undefined ? "socials" : `socials socials--${mod}`
     div(class=socialsClass)
         each item in socials
             li.socials__item
-                a(href=`${item === 'envelope' ? 'mailto:egerix@mail.ru' : '#'}`).socials__link
-                    +icon(item, 'socials__icon')
+                a(href=`${item[1]}` target="_blank").socials__link
+                    +icon(item[0], 'socials__icon')

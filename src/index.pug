@@ -11,11 +11,8 @@ include ./mixins/thumbnails
 include ./mixins/works-slider
 include ./mixins/tags
 include ./mixins/work
-include ./mixins/quote
-include ./mixins/reviews
 include ./mixins/text-quote
 include ./mixins/logo
-include ./mixins/reviewer
 
 doctype html
 html(lang="en")
@@ -44,7 +41,7 @@ html(lang="en")
                                 +userinfo
                     .container.fullscreen-content__scroll
                         +scroll-down
-                section.about
+                section.about#about
                     .container.about__container
                         .about__user
                             +user
@@ -62,7 +59,7 @@ html(lang="en")
 
             +triangles("top")
             .middle
-                section.values
+                section.values#skills
                     .container.values__container
                         .values__content
                             .values__header
@@ -76,17 +73,12 @@ html(lang="en")
                     .container.works__container
                         .works__title Мои работы
                         .works__wrapper
-                            .works__slider
-                                +works-slider
-                            .works__content
-                                .works__tags
-                                    +tags
-                                +work
+                            #preview-component
             +triangles("bottom")
-            section.reviews-section
+            section.reviews-section#reviews
                 .container.reviews-section__container
                     .reviews-section__content
-                        +reviews
+                        #reviews-component
             footer.footer
                 .container.footer__container
                     .footer__copyright

@@ -15,11 +15,12 @@
   &__preview {
     width: 100%;
     height: 100%;
+    z-index: 1;
+    position: relative;
   }
 
   &__image {
     width: 100%;
-  //max-width: 975px;
   }
 
   &__thumbnails {
@@ -27,6 +28,7 @@
     bottom: 0;
     right: 0;
     width: 18%;
+    z-index: 2;
     @include tablets {
       display: none;
     }
@@ -85,7 +87,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
-    transition: opacity .3s, margin-top .3s;
     opacity: .3;
   }
 

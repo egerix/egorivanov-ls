@@ -1,0 +1,68 @@
+script(type="text/x-template")#preview-container
+    .works-preview
+        display(
+            :currentWork="currentWork",
+            :currentIndex="currentIndex",
+            :worksCount="worksCount",
+            :works="works",
+            @slide="slide"
+        )
+        info(
+            :currentWork="currentWork"
+        )
+
+script(type="text/x-template")#preview-info
+    .works-preview__content
+        .works-preview__tags
+            tags(
+                :tags="tagsArray"
+            )
+        .work
+            h3.subtitle.work__subtitle {{ currentWork.title }}
+            p.work__description {{ currentWork.desc }}
+            a(:href="currentWork.link" target="_blank").work__link Посмотреть сайт
+
+script(type="text/x-template")#preview-display
+    .works-preview__slider
+        .works-slider
+            .works-slider__fream
+                .works-slider__preview
+                    img(:src="currentWork.photo").works-slider__image
+                .works-slider__number {{ currentIndex + 1 }}
+                btns(
+                    :currentIndex="currentIndex",
+                    :worksCount="worksCount",
+                    @slide="$emit('slide', $event)"
+                )
+                thumbs(
+                    :works="reversedWorks",
+                    :currentWork="currentWork"
+                )
+
+script(type="text/x-template")#preview-thumbs
+    .works-slider__thumbnails
+        .thumbnails
+            ul.thumbnails__list
+                li.thumbnails__item(
+                    v-for="slide in works" :key="slide.id"
+                    :class="{'thumbnails__item--active': currentWork.id === slide.id}"
+                )
+                    img(:src="slide.photo").thumbnails__image
+
+script(type="text/x-template")#preview-btns
+    .works-slider__buttons
+        button(
+            type="button"
+            ref="nextBtn"
+            @click="$emit('slide', 'next')"
+        ).works-slider__btn.works-slider__btn--next
+        button(
+            type="button"
+            ref="prevBtn"
+            @click="$emit('slide', 'prev')"
+        ).works-slider__btn.works-slider__btn--prev
+
+script(type="text/x-template")#preview-tags
+    .tags
+        ul.tags__list
+            li(v-for="tag in tags" ).tags__item {{ tag }}

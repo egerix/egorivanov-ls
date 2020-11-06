@@ -4,16 +4,6 @@
         padding-bottom: 100px;
     }
 
-    &__container {
-    }
-
-    &__wrapper {
-        display: flex;
-        @media screen and (max-width: 1070px) {
-            flex-direction: column;
-        }
-    }
-
     &__title {
         font-weight: bold;
         font-size: 36px;
@@ -26,36 +16,5 @@
         @include phones {
             margin-bottom: 30px;
         }
-    }
-
-    &__slider {
-        width: 100%;
-        max-width: 1135px;
-        @media screen and (max-width: 1070px) {
-            margin-bottom: 60px;
-        }
-        @include tablets {
-            width: 105%;
-            margin-left: -2.5%;
-            margin-right: -2.5%;
-
-        }
-        @include phones {
-            width: 117%;
-            margin-left: -8.5%;
-            margin-right: -8.5%;
-        }
-    }
-
-    &__content {
-        width: 340px;
-        flex-shrink: 0;
-        @media screen and (max-width: 1070px) {
-            width: 100%;
-        }
-    }
-
-    &__tags {
-        margin-bottom: 23px;
     }
 }

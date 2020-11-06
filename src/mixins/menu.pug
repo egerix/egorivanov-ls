@@ -1,4 +1,4 @@
-- var menuLinks = ["Обо мне", "Навыки", "Работы", "Отзывы"];
+- var menuLinks = [["Обо мне", "about"], ["Навыки", "skills"], ["Работы", "works"], ["Отзывы", "reviews"]];
 
 mixin menu(mod)
     -var menuClass = mod === undefined ? "menu" : `menu menu--${mod}`
@@ -6,4 +6,4 @@ mixin menu(mod)
         ul.menu__list
             each item in menuLinks
                 li.menu__item
-                    a(href="#").menu__link #{item}
+                    a(href=`#${item[1]}`).menu__link #{item[0]}
