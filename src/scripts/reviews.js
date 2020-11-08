@@ -13,22 +13,38 @@ new Vue({
         return {
             reviews: [],
             sliderOptions: {
-                slidesPerView: 2,
-                slidesPerGroup: 2
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 40,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2
+                    }
+                },
             }
         }
     },
     mounted() {
         const refs = this.$refs
-        refs.prevBtn.style.opacity = .4
+        const classDisabled = "reviews__btn--disabled"
+        refs.prevBtn.classList.add(classDisabled)
+        refs.prevBtn.disabled = true;
+
         refs.slider.$swiper.on("slideChange", function () {
             if (this.isEnd) {
-                refs.nextBtn.style.opacity = .4
-            } else refs.nextBtn.style.opacity = 1
-            if (this.isBeginning) {
-                refs.prevBtn.style.opacity = .4
+                refs.nextBtn.classList.add(classDisabled)
+                refs.nextBtn.disabled = true;
             } else {
-                refs.prevBtn.style.opacity = 1
+                refs.nextBtn.classList.remove(classDisabled)
+                refs.nextBtn.disabled = false;
+            }
+            if (this.isBeginning) {
+                refs.prevBtn.classList.add(classDisabled)
+                refs.prevBtn.disabled = true;
+            } else {
+                refs.prevBtn.classList.remove(classDisabled)
+                refs.prevBtn.disabled = false;
             }
         })
     },

@@ -1,6 +1,12 @@
 .user {
   min-width: 320px;
 
+  @include tablets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   @include phones {
     min-width: 0;
   }
@@ -25,6 +31,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    @include tablets {
+      max-width: 50%;
+      min-width: 250px;
+    }
   }
 
   &__about-row {

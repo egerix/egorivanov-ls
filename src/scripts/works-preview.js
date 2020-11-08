@@ -9,27 +9,24 @@ const btns = {
     props: ["currentIndex", "worksCount"],
     watch: {
         currentIndex(index) {
-            console.log(this)
-
-            console.log(this.worksCount)
             if (index === 0) {
-                this.$refs.prevBtn.style.opacity = .4;
+                this.$refs.prevBtn.classList.add("works-slider__btn--disabled")
                 this.$refs.prevBtn.disabled = true;
             } else {
-                this.$refs.prevBtn.style.opacity = 1;
+                this.$refs.prevBtn.classList.remove("works-slider__btn--disabled")
                 this.$refs.prevBtn.disabled = false;
             }
             if (index === this.worksCount - 1) {
-                this.$refs.nextBtn.style.opacity = .4;
+                this.$refs.nextBtn.classList.add("works-slider__btn--disabled")
                 this.$refs.nextBtn.disabled = true;
             } else {
-                this.$refs.nextBtn.style.opacity = 1;
+                this.$refs.nextBtn.classList.remove("works-slider__btn--disabled")
                 this.$refs.nextBtn.disabled = false;
             }
         }
     },
     mounted() {
-        this.$refs.prevBtn.style.opacity = .4;
+        this.$refs.prevBtn.classList.add("works-slider__btn--disabled")
         this.$refs.prevBtn.disabled = true;
     }
 }
@@ -44,7 +41,7 @@ const display = {
     computed: {
         reversedWorks() {
             const works = [...this.works];
-            return works.slice(0, 3).reverse();
+            return works.reverse();
         }
     }
 }
@@ -83,7 +80,7 @@ new Vue({
     },
     computed: {
         currentWork() {
-            return this.works[0]
+            return this.works[this.currentIndex]
         }
     },
     methods: {
@@ -97,17 +94,16 @@ new Vue({
             const lastItem = this.works[this.works.length - 1];
             switch (direction) {
                 case "next":
-                    this.works.push(this.works[0]);
-                    this.works.shift();
                     this.currentIndex++;
                     break;
                 case "prev":
-                    this.works.unshift(lastItem);
-                    this.works.pop();
                     this.currentIndex--;
                     break;
             }
-        }
+        },
+        showSlide(slideId) {
+            this.currentIndex = slideId - 1;
+        },
     },
     created() {
         const data = require("../data/works.json");

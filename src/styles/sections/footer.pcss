@@ -11,21 +11,22 @@
     display: flex;
     justify-content: space-around;
     padding: 62px 0 90px 0;
-    @include phones {
+    @include tablets {
         flex-direction: column;
     }
 }
 
 .footer__copyright {
-    width: 30%;
+    min-width: 400px;
     display: flex;
     color: rgba(#fff, .1);
     justify-content: flex-start;
     @include desktop {
+        min-width: 200px;
         flex-direction: column;
         justify-content: flex-start;
     }
-    @include phones{
+    @include tablets{
         width: 100%;
         padding-bottom: 44px;
     }
@@ -35,7 +36,7 @@
     @include desktop {
         flex: 0
     }
-    @include phones{
+    @include tablets{
         padding-bottom: 24px;
     }
 }
@@ -44,6 +45,9 @@
     padding-left: 56px;
     display: flex;
     flex-direction: column;
+    @include desktop {
+        padding: 20px 0 0 0;
+    }
 }
 
 .footer__copyright-name {
@@ -71,9 +75,8 @@
 }
 
 .footer__data {
-    width: 60%;
     padding-top: 7px;
-    @include phones {
+    @include tablets {
         width: 100%;
     }
 }
@@ -81,7 +84,7 @@
 .footer__data-menu {
     display: flex;
     margin-bottom: 48px;
-    @include phones {
+    @include tablets {
         flex-wrap: wrap;
         width: 100%;
     }
@@ -90,14 +93,14 @@
 .footer__data-content {
     display: flex;
     justify-content: space-between;
-    @include tablets {
+    @include desktop {
         flex-direction: column;
     }
 }
 
 .footer__data-col {
     width: 46%;
-    @include tablets {
+    @include desktop {
         width: 100%
     }
 }
@@ -108,7 +111,7 @@
 
 .footer__data-socials {
     color: rgba(255, 255, 255, 0.45);
-    @include tablets {
+    @include desktop {
         padding-bottom: 50px;
     }
 }

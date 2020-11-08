@@ -5,7 +5,8 @@ script(type="text/x-template")#preview-container
             :currentIndex="currentIndex",
             :worksCount="worksCount",
             :works="works",
-            @slide="slide"
+            @slide="slide",
+            @showSlide="showSlide",
         )
         info(
             :currentWork="currentWork"
@@ -36,7 +37,8 @@ script(type="text/x-template")#preview-display
                 )
                 thumbs(
                     :works="reversedWorks",
-                    :currentWork="currentWork"
+                    :currentWork="currentWork",
+                    @showSlide="$emit('showSlide', $event)"
                 )
 
 script(type="text/x-template")#preview-thumbs
@@ -44,9 +46,9 @@ script(type="text/x-template")#preview-thumbs
         .thumbnails
             ul.thumbnails__list
                 li.thumbnails__item(
-                    v-for="slide in works" :key="slide.id"
+                    v-for="(slide, index) in works" :key="slide.id"
                     :class="{'thumbnails__item--active': currentWork.id === slide.id}"
-                )
+                    @click="$emit('showSlide', slide.id)")
                     img(:src="slide.photo").thumbnails__image
 
 script(type="text/x-template")#preview-btns

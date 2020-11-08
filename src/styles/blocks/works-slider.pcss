@@ -39,6 +39,7 @@
     display: flex;
     bottom: -50px;
     right: 0;
+    z-index: 1;
     @include tablets {
       bottom: 0;
     }
@@ -46,23 +47,22 @@
 
   &__number {
     position: absolute;
-    bottom: 290px;
-    right: -164px;
+    bottom: 250px;
+    right: -150px;
     color: #f0f0f0;
     font-size: 400px;
     font-weight: 800;
     line-height: 48px;
     z-index: 0;
     @include desktopHd {
-      bottom: 16.1111vw;
-      right: -9.1111vw;
-      font-size: 22.2222vw;
+      bottom: 14vw;
+      right: -9vw;
     }
     @include desktop {
       flex-direction: column;
-      top: 140px;
-      right: -132px;
-      font-size: 300px;
+      top: 23vw;
+      right: -14vw;
+      font-size: 40vw;
     }
     @include tablets {
       display: none;
@@ -90,7 +90,7 @@
     opacity: .3;
   }
 
-  &:hover {
+  &:not(.works-slider__btn--disabled):hover {
     &:before {
       opacity: 1;
     }
@@ -114,5 +114,10 @@
         margin-top: -3px;
       }
     }
+  }
+
+  &--disabled {
+    background: #64666c;
+
   }
 }

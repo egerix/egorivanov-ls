@@ -2,6 +2,10 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+
+    @include desktop {
+      justify-content: center;
+    }
   }
 
   &__item {

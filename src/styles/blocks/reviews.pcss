@@ -9,6 +9,11 @@
     display: flex;
     align-items: center;
     margin-bottom: 5vh;
+
+    @include tablets {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 .reviews__title {
@@ -16,14 +21,18 @@
     font-size: 30px;
     line-height: 41px;
     margin-right: 10%;
-    @include phones {
+    @include tablets {
         font-size: 24px;
         line-height: 33px;
+        margin-right: 0;
     }
 }
 
 .reviews__buttons {
     display: flex;
+    @include tablets {
+        margin-top: 20px;
+    }
 }
 
 .reviews__btn {
@@ -33,6 +42,7 @@
     position: relative;
     border-radius: 50%;
     margin-right: 30px;
+    background: transparent;
 
     &:last-child {
         margin-right: 0;
@@ -56,11 +66,15 @@
         }
     }
 
-    &:hover {
+    &--disabled {
+        opacity: .4;
+    }
+
+    &:not(.reviews__btn--disabled):hover {
         color: $light-hover-color;
     }
 
-    &:hover:before {
+    &:not(.reviews__btn--disabled):hover:before {
         background: svg-load('arrow-down.svg', fill=$light-hover-color) center center / contain no-repeat;
     }
 }

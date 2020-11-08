@@ -8,7 +8,7 @@
 
 mixin socials(mod)
     -var socialsClass = mod === undefined ? "socials" : `socials socials--${mod}`
-    div(class=socialsClass)
+    ul(class=socialsClass)
         each item in socials
             li.socials__item
                 a(href=`${item[1]}` target="_blank").socials__link

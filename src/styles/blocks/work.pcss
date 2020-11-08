@@ -1,6 +1,17 @@
 .work {
+
+  @include phones {
+    padding: 0;
+  }
+
   &__subtitle {
     margin-bottom: 31px;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    @include desktop {
+      text-align: center;
+    }
   }
 
   &__description {
@@ -9,14 +20,20 @@
     font-weight: 600;
     line-height: 30px;
     margin-bottom: 39px;
+    @include desktop {
+      text-align: center;
+    }
   }
 
   &__link {
-    display: inline-block;
+    display: block;
     color: #4b6fd7;
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
+    @include desktop {
+      text-align: center;
+    }
 
     &:hover {
       text-decoration: underline;

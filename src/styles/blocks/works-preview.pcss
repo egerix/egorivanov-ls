@@ -1,14 +1,14 @@
 .works-preview {
 
     display: flex;
-    @media screen and (max-width: 1070px) {
+    @include desktop {
         flex-direction: column;
     }
 
     &__slider {
         width: 100%;
         max-width: 1135px;
-        @media screen and (max-width: 1070px) {
+        @include desktop {
             margin-bottom: 60px;
         }
         @include tablets {
@@ -27,7 +27,7 @@
     &__content {
         width: 340px;
         flex-shrink: 0;
-        @media screen and (max-width: 1070px) {
+        @include desktop {
             width: 100%;
         }
     }
