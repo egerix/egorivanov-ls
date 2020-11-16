@@ -1,13 +1,15 @@
 .menu {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .menu__list {
+    flex: 1;
     display: flex;
     color: $text-color;
     max-width: 500px;
     justify-content: space-between;
     flex-wrap: wrap;
-
 }
 
 .menu__item {
@@ -29,6 +31,7 @@
 }
 
 .menu--footer {
+    justify-content: flex-start;
 
     .menu__item {
         color: #fff;
