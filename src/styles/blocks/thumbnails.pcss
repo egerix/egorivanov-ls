@@ -1,0 +1,36 @@
+.thumbnails {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        will-change: transform;
+        height: calc(100px * 4 + 6px);
+        overflow: hidden;
+        padding: 3px;
+        margin: -3px;
+    }
+
+    &__item {
+        position: relative;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    &__item:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 3px solid transparent;
+    }
+
+    &__item:hover:not(&__item--active) {
+        filter: grayscale(100%)
+    }
+
+    &__item--active:after {
+        border-color: #f29400;
+    }
+}

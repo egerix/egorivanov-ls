@@ -1,0 +1,11 @@
+mixin user
+    .user
+        .user__avatar
+            .user__avatar-wrapper
+                +image('content/user.jpg', 'user__avatar-pic')
+        ul.user__about
+            - var userinfo = [['Проживаю:', "Санкт-Петербург"],['Возраст:', "30 лет"],['Родился:', "23 июня 1990"],];
+            each item in userinfo
+                li.user__about-row
+                    .user__about-row-title #{item[0]}
+                    .user__about-row-value #{item[1]}

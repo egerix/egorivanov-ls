@@ -1,30 +1,62 @@
-.user__avatar-wrapper {
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 0px 10px 24px 0 rgba(#000, .3);
-  margin: 0 70px;
-  flex-shrink: 0;
-}
+.user {
+  min-width: 320px;
 
-.user__table {
-  padding-top: 70px;
-  font-weight: 600;
-  width: 100%;
-}
+  @include tablets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.table__row {
-  tr:last-child td {
-    padding-bottom: 0;
+  @include phones {
+    min-width: 0;
+  }
+
+  &__avatar {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__avatar-wrapper {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 10px 24px 0 rgba(#000, .3);
+    flex-shrink: 0;
+  }
+
+  &__about {
+    padding-top: 3vw;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include tablets {
+      max-width: 50%;
+      min-width: 250px;
+    }
+  }
+
+  &__about-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__about-row-title {
+    flex-basis: 49%;
+    color: rgba($text-color, .5);
+  }
+
+  &__about-row-value {
+    flex-basis: 51%;
+    text-align: left;
   }
 }
 
-.user__table-title {
-  padding-bottom: 19px;
-  color: rgba($text-color, .5);
-}
 
-.user__table-content {
-  padding-bottom: 19px;
-}
+

@@ -1,0 +1,38 @@
+.works-preview {
+
+    display: flex;
+    @include desktop {
+        flex-direction: column;
+    }
+
+    &__slider {
+        width: 100%;
+        max-width: 1135px;
+        @include desktop {
+            margin-bottom: 60px;
+        }
+        @include tablets {
+            width: 105%;
+            margin-left: -2.5%;
+            margin-right: -2.5%;
+
+        }
+        @include phones {
+            width: 117%;
+            margin-left: -8.5%;
+            margin-right: -8.5%;
+        }
+    }
+
+    &__content {
+        width: 340px;
+        flex-shrink: 0;
+        @include desktop {
+            width: 100%;
+        }
+    }
+
+    &__tags {
+        margin-bottom: 23px;
+    }
+}

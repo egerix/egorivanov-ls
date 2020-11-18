@@ -1,13 +1,20 @@
-.menu__list {
+.menu {
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+.menu__list {
+    flex: 1;
+    display: flex;
     color: $text-color;
+    max-width: 500px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .menu__item {
     font-size: 16px;
     line-height: 22px;
-    margin-right: 60px;
 
     &:last-child {
         margin-right: 0;
@@ -23,11 +30,20 @@
     white-space: nowrap;
 }
 
-.menu--color-white {
+.menu--footer {
+    justify-content: flex-start;
+
     .menu__item {
         color: #fff;
         &:hover {
             text-shadow: 0 0 1px, 0 0 1px;
+        }
+        @include phones {
+            width: 50%;
+            font-size: 16px;
+            line-height: 22px;
+            margin-right: 0;
+            padding-bottom: 20px;
         }
     }
 }

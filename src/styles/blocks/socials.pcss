@@ -1,12 +1,15 @@
 .socials {
   display: flex;
+
 }
 
 .socials__item {
+  list-style-type: none;
   width: 25px;
   height: 25px;
   align-items: center;
   margin-right: 35px;
+  flex-shrink: 0;
   &:last-child {
     margin-right: 0;
   }
@@ -37,6 +40,9 @@
     margin-right: 19px;
     &:hover {
       color: $dark-hover-color;
+    }
+    &:last-child {
+      margin-right: 0;
     }
   }
   .socials__link {

@@ -5,7 +5,7 @@
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px",
+  "bp-phones": "320px",
   "light-hover-color": "#5500f2",
   "dark-hover-color": "#ff9a00",
   "white-text-hover": "#ffffff"

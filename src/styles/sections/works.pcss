@@ -1,0 +1,25 @@
+.works {
+    padding: 60px 0 172px;
+
+    @include desktop {
+        padding-bottom: 100px;
+    }
+
+    @include tablets {
+        padding-bottom: 60px;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 49px;
+        margin-bottom: 90px;
+        @include tablets {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        @include phones {
+            margin-bottom: 30px;
+        }
+    }
+}

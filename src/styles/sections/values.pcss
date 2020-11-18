@@ -1,0 +1,95 @@
+$base-height: 627px;
+
+.values {
+    position: relative;
+    padding-bottom: 63px;
+    min-height: calc(147px + $base-height + 63px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &__content {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        min-height: $base-height;
+
+        @include desktop {
+            width: auto;
+            margin-left: 24vw;
+        }
+        @include tablets {
+            margin-left: 0;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 520px;
+            height: $base-height;
+            background-image: url('~images/decor/bag.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            left: -550px;
+            @include tablets {
+                width: calc(520px / 2);
+                height: calc($base-height / 2);
+                position: relative;
+                top: unset;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+
+    &__header {
+        margin-bottom: 6vh;
+        width: 65%;
+        min-width: 500px;
+
+        @include tablets {
+            width: 100%;
+            min-width: 0;
+            text-align: center;
+        }
+        @include phones {
+            text-align: left;
+        }
+    }
+
+    &__title-text {
+        font-size: 30px;
+        line-height: 41px;
+        font-weight: 700;
+        margin-bottom: 4vh;
+        @include phones {
+            font-size: 24px;
+            line-height: 36px;
+            text-align: left;
+        }
+    }
+
+    &__title-content {
+        color: rgba($text-color, .8);
+        font-weight: 600;
+        line-height: 30px;
+        @include phones {
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+
+    &__skills {
+        margin-left: 11%;
+        @include tablets {
+            margin-left: 0;
+        }
+    }
+}
