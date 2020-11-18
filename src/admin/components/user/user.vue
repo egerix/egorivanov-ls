@@ -13,7 +13,7 @@ export default {
     avatar
   },
   computed: {
-    userPic(){
+    userPic() {
       return require("../../../images/content/user.jpg").default
     }
   }
@@ -21,16 +21,4 @@ export default {
 
 </script>
 
-<style lang="postcss">
-  .user-component {
-    display: flex;
-    font-size: 18px;
-    font-weight: 600;
-    align-items: center;
-  }
-
-  .username {
-    margin-left: 10px;
-    color: #ffffff;
-  }
-</style>
+<style lang="postcss" scoped src="./user.pcss"/>

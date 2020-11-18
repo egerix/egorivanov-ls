@@ -1,3 +1,5 @@
+@import "../styles/mixins.pcss";
+
 .app-container {
     min-height: 100vh;
     display: flex;
@@ -7,6 +9,12 @@
 .header {
     display: flex;
     margin-bottom: 60px;
+    @include tablets {
+        height: 65px;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
 }
 
 .page-content {
@@ -25,9 +33,14 @@
 .skills {
     display: flex;
     flex-wrap: wrap;
+
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .item {
-    width: calc(100%/2 - 30px);
+    flex-basis: calc(100%/2 - 30px);
     margin-right: 30px;
+    margin-bottom: 30px;
 }

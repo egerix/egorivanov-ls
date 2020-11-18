@@ -11,3 +11,10 @@ export const defaultView = () => ({
     <skill-add-line /> 
   `
 })
+
+export const blockedView = () => ({
+  components: {skillAddLine},
+  template: `
+    <skill-add-line blocked/> 
+  `
+})
