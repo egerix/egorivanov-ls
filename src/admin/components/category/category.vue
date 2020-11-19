@@ -2,9 +2,10 @@
   <card slim>
     <edit-line
         slot="title"
-        :category="category"
-        @remove="$emit('remove', category)"
-        @approve="$emit('approve', category)"
+        v-model="categoryTitle"
+        :editModeByDefault="empty"
+        @remove="$emit('remove', $event)"
+        @approve="$emit('approve', $event)"
     />
     <template slot="content">
       <ul class="skills" v-if="empty === false">
@@ -17,10 +18,7 @@
         </li>
       </ul>
       <div class="bottom-line">
-        <skill-add-line
-            :blocked="empty"
-            @approve="$emit('create-skill', $event)"
-        />
+        <skill-add-line @approve="$emit('create-skill', $event)" :blocked="empty" />
       </div>
     </template>
   </card>
@@ -37,15 +35,23 @@ export default {
     card,
     editLine,
     skill,
-    skillAddLine
+    skillAddLine,
   },
   props: {
+    category: Object,
     empty: Boolean,
-    category: {
-      type: Object
-    }
+    // title: {
+    //   type: String,
+    //   default: "",
+    // },
+    // skills: {
+    //   type: Array,
+    //   default: () => [],
+    // },
   },
-}
+  data() {
+  },
+};
 </script>
 
 <style lang="postcss" scoped src="./category.pcss"/>

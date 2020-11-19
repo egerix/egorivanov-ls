@@ -1,22 +1,19 @@
 <template>
   <div class="about-page-component">
-
     <div class="page-content">
-      <div class="container">
+      <div class="container" v-if="categories.length">
         <div class="header">
-          <div class="title">
-            Блок "Обо мне"
-          </div>
-          <iconed-btn
+          <div class="title">Блок "Обо мне"</div>
+          <iconed-button
               type="iconed"
               v-if="emptyCatIsShown === false"
               @click="emptyCatIsShown = true"
-              title="Добавить группу"/>
+              title="Добавить группу"
+          />
         </div>
         <ul class="skills">
           <li class="item" v-if="emptyCatIsShown">
             <category
-                :category="{title: ''}"
                 @remove="emptyCatIsShown = false"
                 @approve="createCategory"
                 empty
@@ -28,38 +25,35 @@
                 @create-skill="createSkill($event, category.id)"
                 @edit-skill="editSkill"
                 @remove-skill="removeSkill"
-                @approve="editCategory"
-                @remove="removeCategory"
             />
           </li>
         </ul>
       </div>
+      <div class="container" v-else>
+        loading...
+      </div>
     </div>
   </div>
-
 </template>
 
 
 <script>
-
-import user from "../../components/user/user";
-import iconedBtn from "../../components/button/types/iconedBtn";
+import button from "../../components/button";
 import category from "../../components/category";
-import {mapActions, mapState} from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
-    user,
-    iconedBtn,
-    category
+    iconedButton: button,
+    category,
   },
   data() {
     return {
-      emptyCatIsShown: false
-    }
+      emptyCatIsShown: false,
+    };
   },
   computed: {
-    ...mapState("categories", {
+    ...mapState("categories",{
       categories: state => state.data
     })
   },
@@ -67,20 +61,10 @@ export default {
     ...mapActions({
       createCategoryAction: "categories/create",
       fetchCategoriesAction: "categories/fetch",
-      editCategoryAction: "categories/edit",
-      removeCategoryAction: "categories/remove",
       addSkillAction: "skills/add",
       removeSkillAction: "skills/remove",
       editSkillAction: "skills/edit",
     }),
-    async createCategory(category) {
-      try {
-        await this.createCategoryAction(category.category)
-        this.emptyCatIsShown = false
-      } catch (error) {
-        console.log(error.message)
-      }
-    },
     async createSkill(skill, categoryId) {
       const newSkill = {
         ...skill,
@@ -91,24 +75,26 @@ export default {
       skill.title = "";
       skill.percent = "";
     },
+    removeSkill(skill) {
+      this.removeSkillAction(skill);
+    },
     async editSkill(skill) {
       await this.editSkillAction(skill);
       skill.editmode = false;
     },
-    async removeSkill(skill) {
-      await this.removeSkillAction(skill);
-    },
-    async editCategory(category) {
-      await this.editCategoryAction(category);
-    },
-    async removeCategory(category)  {
-      await this.removeCategoryAction(category);
-    },
+    async createCategory(categoryTitle) {
+      try {
+        await this.createCategoryAction(categoryTitle);
+        this.emptyCatIsShown = false;
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   },
   created() {
     this.fetchCategoriesAction();
-  }
-}
+  },
+};
 </script>
 
 <style lang="postcss" scoped src="./about.pcss"></style>
