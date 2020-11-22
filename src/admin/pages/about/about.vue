@@ -41,7 +41,7 @@
 <script>
 import button from "../../components/button";
 import category from "../../components/category";
-import { mapActions, mapState } from "vuex";
+import {mapActions, mapState} from "vuex";
 
 export default {
   components: {
@@ -54,7 +54,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("categories",{
+    ...mapState("categories", {
       categories: state => {
         console.log("CATS");
         return state.data
@@ -63,6 +63,7 @@ export default {
   },
   methods: {
     ...mapActions({
+      showTooltip: "tooltips/show",
       createCategoryAction: "categories/create",
       removeCategoryAction: "categories/remove",
       editCategoryAction: "categories/edit",
@@ -72,42 +73,64 @@ export default {
       editSkillAction: "skills/edit",
     }),
     async createSkill(skill, categoryId) {
-      const newSkill = {
-        ...skill,
-        category: categoryId
-      }
-      await this.addSkillAction(newSkill);
+      try {
+        const newSkill = {
+          ...skill,
+          category: categoryId
+        }
+        await this.addSkillAction(newSkill);
+        skill.title = "";
+        skill.percent = "";
 
-      skill.title = "";
-      skill.percent = "";
+        this.showTooltip({text: `Добавлен скилл - ${newSkill.title}`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
+      }
     },
     removeSkill(skill) {
-      this.removeSkillAction(skill);
+      try {
+        this.removeSkillAction(skill);
+
+        this.showTooltip({text: `Скилл '${skill.title}' удален`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
+      }
     },
     async editSkill(skill) {
-      await this.editSkillAction(skill);
-      skill.editmode = false;
+      try {
+        await this.editSkillAction(skill);
+        skill.editmode = false;
+
+        this.showTooltip({text: `Скилл '${skill.title}' изменен`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
+      }
     },
     async createCategory(category) {
       try {
         await this.createCategoryAction(category.category);
         this.emptyCatIsShown = false;
-      } catch (error) {
-        console.log(error.message);
+
+        this.showTooltip({text: `Создана категория - ${category.category}`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
       }
     },
     async removeCategory(category) {
       try {
         await this.removeCategoryAction(category);
-      } catch (error) {
-        console.log(error.message);
+        this.showTooltip({text: `Категория '${category.category}' удалена`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
       }
     },
     async editCategory(category) {
       try {
         await this.editCategoryAction(category);
-      } catch (error) {
-        console.log(error.message);
+
+        this.showTooltip({text: `Категория '${category.category}' изменена`, type: "success"})
+      } catch (e) {
+        this.showTooltip({text: e, type: "error"})
       }
     }
   },
