@@ -58,7 +58,7 @@ export default {
                 }
                 commit("ADD_CATEGORY", fullData);
             } catch (error) {
-                throw Error(error.response.data.message)
+                throw Error(error.response.data.message || error.response.data.error)
             }
         },
         async fetch({commit}) {
@@ -66,7 +66,7 @@ export default {
                 const {data} = await this.$axios.get('/categories/420')
                 commit("SET_CATEGORIES", data)
             } catch (error) {
-                throw Error(error.response.data.message)
+                throw Error(error.response.data.message || error.response.data.error)
             }
         },
         async edit({commit}, category) {
@@ -78,7 +78,7 @@ export default {
                     message: 'AAA'
                 }, { root: true });
             } catch (error) {
-                throw Error(error.response.data.message)
+                throw Error(error.response.data.message || error.response.data.error)
             }
         },
         async remove({commit}, category) {
@@ -86,7 +86,7 @@ export default {
                 await this.$axios.delete(`/categories/${category.id}`);
                 commit('REMOVE_CATEGORY', category);
             } catch (error) {
-                throw Error(error.response.data.message)
+                throw Error(error.response.data.message || error.response.data.error)
             }
         }
     }
