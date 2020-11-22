@@ -1,39 +1,37 @@
 <template>
-  <div class="about-page-component">
-    <div class="page-content">
-      <div class="container">
-        <div class="header">
-          <div class="title">Блок "Обо мне"</div>
-          <iconed-button
-              type="iconed"
-              v-if="emptyCatIsShown === false"
-              @click="emptyCatIsShown = true"
-              title="Добавить группу"
-          />
-        </div>
-        <ul class="skills">
-          <li class="item" v-if="emptyCatIsShown">
-            <category
-                :category="{category: ''}"
-                @remove="emptyCatIsShown = false"
-                @approve="createCategory"
-                empty
-            />
-          </li>
-          <li class="item" v-for="category in categories" :key="category.id">
-            <category
-                :category="category"
-                @create-skill="createSkill($event, category.id)"
-                @edit-skill="editSkill"
-                @remove-skill="removeSkill"
-                @remove="removeCategory"
-                @approve="editCategory"
-            />
-          </li>
-        </ul>
+  <div class="about-page-component page-content">
+    <div class="container">
+      <div class="header">
+        <div class="title">Блок "Обо мне"</div>
+        <iconed-button
+            type="iconed"
+            v-if="emptyCatIsShown === false"
+            @click="emptyCatIsShown = true"
+            title="Добавить группу"
+        />
       </div>
-
+      <ul class="skills">
+        <li class="item" v-if="emptyCatIsShown">
+          <category
+              :category="{category: ''}"
+              @remove="emptyCatIsShown = false"
+              @approve="createCategory"
+              empty
+          />
+        </li>
+        <li class="item" v-for="category in categories" :key="category.id">
+          <category
+              :category="category"
+              @create-skill="createSkill($event, category.id)"
+              @edit-skill="editSkill"
+              @remove-skill="removeSkill"
+              @remove="removeCategory"
+              @approve="editCategory"
+          />
+        </li>
+      </ul>
     </div>
+
   </div>
 </template>
 
