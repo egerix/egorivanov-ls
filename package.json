@@ -16,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.3.1",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
@@ -64,6 +65,8 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "axios": "^0.21.0",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^3.0.0",
@@ -71,6 +74,7 @@
     "signale": "^1.4.0",
     "swiper": "^6.3.5",
     "vue": "^2.6.7",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vuex": "^3.5.1"
   }
 }

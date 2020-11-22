@@ -2,13 +2,14 @@
   <card slim>
     <edit-line
         slot="title"
-        v-model="categoryTitle"
-        :edit-mode-by-default="empty"
-        @remove="$emit('remove', $event)"
+        v-model="currCategory.category"
+        :editModeByDefault="empty"
+        @remove="$emit('remove', currCategory)"
+        @approve="onEditCategory"
     />
     <template slot="content">
       <ul class="skills" v-if="empty === false">
-        <li class="item" v-for="skill in skills" :key="skill.id">
+        <li class="item" v-for="skill in currCategory.skills" :key="skill.id">
           <skill
               :skill="skill"
               @remove="$emit('remove-skill', $event)"
@@ -17,7 +18,7 @@
         </li>
       </ul>
       <div class="bottom-line">
-        <skill-add-line :blocked="empty"/>
+        <skill-add-line @approve="$emit('create-skill', $event)" :blocked="empty"/>
       </div>
     </template>
   </card>
@@ -29,36 +30,30 @@ import editLine from "../editLine";
 import skill from "../skill";
 import skillAddLine from "../skillAddLine";
 
-const skills = [
-  {id: 0, title: "Html", percent: 80},
-  {id: 1, title: "Html", percent: 20},
-  {id: 2, title: "Html", percent: 40},
-]
-
 export default {
   components: {
     card,
     editLine,
     skill,
-    skillAddLine
+    skillAddLine,
   },
   props: {
-    empty: Boolean,
-    title: {
-      type: String,
-      default: ""
+    category: {
+      type: Object
     },
-    skills: {
-      type: Array,
-      default: () => []
-    }
+    empty: Boolean,
   },
   data() {
     return {
-      categoryTitle: this.title,
+      currCategory: this.category
+    }
+  },
+  methods: {
+    onEditCategory() {
+      this.$emit('approve', this.category)
     }
   }
-}
+};
 </script>
 
 <style lang="postcss" scoped src="./category.pcss"/>

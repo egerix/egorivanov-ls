@@ -35,6 +35,8 @@ export default {
     },
     "skill.percent": (value) => {
       return Validator.value(value)
+          .integer("Должно быть числом")
+          .between(0, 100, "Значение должно быть меньше 100")
           .required("Не может быть пустым");
     },
   },
@@ -55,7 +57,11 @@ export default {
   },
   methods: {
     addSkillClick() {
-      this.$validate()
+      this.$validate().then((success) => {
+        if (!success) return
+        this.$emit("approve", this.skill)
+        this.validation.reset()
+      })
     },
   },
 };

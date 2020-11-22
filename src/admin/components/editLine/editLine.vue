@@ -9,13 +9,13 @@
     <div v-else class="title">
       <div class="input">
         <app-input
-          placeholder="Название новой группы"
-          :value="value"
-          :errorMessage="validation.firstError('value')"
-          @input="$emit('input', $event)"
-          @keydown.native.enter="onApprove"
-          autofocus="autofocus"
-          no-side-paddings="no-side-paddings"
+            placeholder="Название новой группы"
+            :value="value"
+            :errorMessage="validation.firstError('value')"
+            @input="$emit('input', $event)"
+            @keydown.native.enter="onApprove"
+            autofocus="autofocus"
+            no-side-paddings="no-side-paddings"
         />
       </div>
       <div class="buttons">
@@ -56,16 +56,14 @@ export default {
     };
   },
   methods: {
-    onApprove() {
-      this.$validate().then(function (success) {
-        if (success) {
-          if (this.title.trim() === this.value.trim()) {
-            this.editmode = false;
-          } else {
-            this.$emit("approve", this.value);
-          }
-        }
-      });
+    async onApprove() {
+      if ((await this.$validate()) === false) return;
+      if (this.title.trim() === this.value.trim()) {
+        this.editmode = false;
+      } else {
+        await this.$emit("approve", this.value);
+      }
+      this.editmode = false;
     }
   },
   components: {
