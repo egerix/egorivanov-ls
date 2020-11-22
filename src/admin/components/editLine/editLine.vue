@@ -11,12 +11,12 @@
         <app-input
             placeholder="Название новой группы"
             :value="value"
-            :errorText="errorText"
+            :errorMessage="validation.firstError('value')"
             @input="$emit('input', $event)"
             @keydown.native.enter="onApprove"
             autofocus="autofocus"
             no-side-paddings="no-side-paddings"
-        ></app-input>
+        />
       </div>
       <div class="buttons">
         <div class="button-icon">
@@ -31,41 +31,45 @@
 </template>
 
 <script>
-import icon from "../icon";
-import appInput from "../input";
+import {Validator, mixin as ValidatorMixin} from "simple-vue-validator";
+
 export default {
+  mixins: [ValidatorMixin],
+  validators: {
+    "value": (value) => {
+      return Validator.value(value)
+          .required("Не может быть пустым");
+    },
+  },
   props: {
     value: {
       type: String,
-      default: "",
-    },
-    errorText: {
-      type: String,
-      default: "",
+      default: ""
     },
     editModeByDefault: Boolean,
-    blocked: Boolean,
+    blocked: Boolean
   },
   data() {
     return {
       editmode: this.editModeByDefault,
-      title: this.value,
+      title: this.value
     };
   },
   methods: {
-    onApprove() {
-      if (this.value.trim() === "") return false;
+    async onApprove() {
+      if ((await this.$validate()) === false) return;
       if (this.title.trim() === this.value.trim()) {
         this.editmode = false;
       } else {
-        this.$emit("approve", this.value);
+        await this.$emit("approve", this.value);
       }
-    },
+      this.editmode = false;
+    }
   },
   components: {
-    icon,
-    appInput
-  },
+    icon: () => import("components/icon"),
+    appInput: () => import("components/input")
+  }
 };
 </script>
 

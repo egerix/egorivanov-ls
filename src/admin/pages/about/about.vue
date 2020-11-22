@@ -1,7 +1,7 @@
 <template>
   <div class="about-page-component">
     <div class="page-content">
-      <div class="container" v-if="categories.length">
+      <div class="container">
         <div class="header">
           <div class="title">Блок "Обо мне"</div>
           <iconed-button
@@ -32,9 +32,7 @@
           </li>
         </ul>
       </div>
-      <div class="container" v-else>
-        loading...
-      </div>
+
     </div>
   </div>
 </template>
@@ -57,7 +55,10 @@ export default {
   },
   computed: {
     ...mapState("categories",{
-      categories: state => state.data
+      categories: state => {
+        console.log("CATS");
+        return state.data
+      }
     })
   },
   methods: {
@@ -87,9 +88,9 @@ export default {
       await this.editSkillAction(skill);
       skill.editmode = false;
     },
-    async createCategory(categoryTitle) {
+    async createCategory(category) {
       try {
-        await this.createCategoryAction(categoryTitle);
+        await this.createCategoryAction(category.category);
         this.emptyCatIsShown = false;
       } catch (error) {
         console.log(error.message);

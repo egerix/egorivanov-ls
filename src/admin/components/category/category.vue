@@ -9,7 +9,7 @@
     />
     <template slot="content">
       <ul class="skills" v-if="empty === false">
-        <li class="item" v-for="skill in category.skills" :key="skill.id">
+        <li class="item" v-for="skill in currCategory.skills" :key="skill.id">
           <skill
               :skill="skill"
               @remove="$emit('remove-skill', $event)"
@@ -49,9 +49,8 @@ export default {
     }
   },
   methods: {
-    onEditCategory(){
-      this.$emit('approve', this.currCategory)
-      this.empty = true
+    onEditCategory() {
+      this.$emit('approve', this.category)
     }
   }
 };

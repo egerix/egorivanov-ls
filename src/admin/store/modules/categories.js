@@ -19,6 +19,7 @@ export default {
         ADD_SKILL: (state, newSkill) => {
             state.data = state.data.map(category => {
                 if (category.id === newSkill.category) {
+                    category.skills = category.skills || [];
                     category.skills.push(newSkill);
                 }
                 return category;
@@ -51,14 +52,18 @@ export default {
         async create({commit}, title) {
             try {
                 const { data } = await this.$axios.post('/categories', { title })
-                commit("ADD_CATEGORY", data);
+                const fullData = {
+                    ...data,
+                    skills: []
+                }
+                commit("ADD_CATEGORY", fullData);
             } catch (error) {
                 throw new Error("произошла ошибка");
             }
         },
         async fetch({commit}) {
             try {
-                const {data} = await this.$axios.get('/categories/420') //TODO: Убрать userId
+                const {data} = await this.$axios.get('/categories/420')
                 commit("SET_CATEGORIES", data)
             } catch (error) {
                 console.log(error);
