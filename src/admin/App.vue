@@ -44,4 +44,4 @@ export default {
 @import "../styles/layout/base.pcss";
 </style>
 
-<style lang="postcss" scoped src="./app.pcss"></style>
+<style lang="postcss" src="./app.pcss"></style>

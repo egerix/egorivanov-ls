@@ -1,8 +1,8 @@
 <template>
   <div class="about-page-component page-content">
     <div class="container">
-      <div class="header">
-        <div class="title">Блок "Обо мне"</div>
+      <div class="page-header">
+        <div class="page-title">Блок "Обо мне"</div>
         <iconed-button
             type="iconed"
             v-if="emptyCatIsShown === false"
@@ -56,6 +56,11 @@ export default {
       categories: state => {
         console.log("CATS");
         return state.data
+      }
+    }),
+    ...mapState("user", {
+      userId: state => {
+        return state.user.id
       }
     })
   },
@@ -133,7 +138,7 @@ export default {
     }
   },
   created() {
-    this.fetchCategoriesAction();
+    this.fetchCategoriesAction(this.userId);
   },
 };
 </script>

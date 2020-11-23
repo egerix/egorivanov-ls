@@ -26,3 +26,26 @@
         }
     }
 }
+.page-content {
+    padding: 60px 0 20px;
+    background: url("~images/bg/admin.jpg") center center / cover no-repeat;
+    flex: 1;
+}
+
+.page-title {
+    margin-right: 60px;
+    font-size: 21px;
+    font-weight: bold;
+    color: $text-color;
+}
+
+.page-header {
+    display: flex;
+    margin-bottom: 60px;
+    @include tablets {
+        height: 65px;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+}

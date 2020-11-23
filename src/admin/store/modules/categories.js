@@ -61,9 +61,9 @@ export default {
                 throw Error(error.response.data.message || error.response.data.error)
             }
         },
-        async fetch({commit}) {
+        async fetch({commit}, userId) {
             try {
-                const {data} = await this.$axios.get('/categories/420')
+                const {data} = await this.$axios.get('/categories/' + userId)
                 commit("SET_CATEGORIES", data)
             } catch (error) {
                 throw Error(error.response.data.message || error.response.data.error)
