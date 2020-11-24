@@ -14,8 +14,8 @@
         </div>
         <a :href="work.link" class="link">{{work.link}}</a>
         <div class="btns">
-          <icon symbol="pencil" title="Править"></icon>
-          <icon symbol="trash" title="Удалить"></icon>
+          <icon symbol="pencil" title="Править" @click="$emit('edit-work', work)"></icon>
+          <icon symbol="trash" title="Удалить" @click="$emit('delete-work', work)"></icon>
         </div>
       </div>
     </div>
@@ -26,9 +26,10 @@
 import card from "../card";
 import icon from "../icon";
 import tagsList from "../tagsList";
+import Button from "../button/button";
 
 export default {
-  components: { card, icon, tagsList },
+  components: {Button, card, icon, tagsList },
   props: {
     work: Object,
   },

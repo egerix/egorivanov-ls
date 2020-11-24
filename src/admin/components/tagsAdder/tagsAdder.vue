@@ -4,6 +4,7 @@
         title="Добавление тега"
         v-model="currentTags"
         @input="$emit('change', currentTags)"
+        :errorMessage="errorMessage"
     />
     <ul class="tags">
       <li class="tag"
@@ -31,6 +32,7 @@ export default {
     tag,
   },
   props: {
+    errorMessage: '',
     tags: {
       type: String,
       default: ""

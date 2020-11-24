@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <router-view name="header"/>
-    <router-view/>
+    <router-view class="app-content"/>
     <div :class="['notify-container', {active: isTooltipShown}]">
       <div class="notification">
         <notification
