@@ -1,64 +1,39 @@
 <template>
   <div class="app-container">
-    <headline title="Панель администрирования">
-      <user/>
-    </headline>
-    <navigation></navigation>
-    <div class="page-content">
-      <div class="container">
-        <div class="header">
-          <div class="title">
-            Блок "Обо мне"
-          </div>
-          <iconed-btn
-              type="iconed"
-              v-if="emptyCatIsShown === false"
-              @click="emptyCatIsShown = true"
-              title="Добавить группу"/>
-        </div>
-        <ul class="skills">
-          <li class="item" v-if="emptyCatIsShown">
-            <category
-                @remove="emptyCatIsShown = false"
-                empty
-            />
-          </li>
-          <li class="item" v-for="category in categories" :key="category.id">
-            <category
-                :title="category.category"
-                :skills="category.skills"
-            />
-          </li>
-        </ul>
+    <router-view name="header"/>
+    <router-view class="app-content"/>
+    <div :class="['notify-container', {active: isTooltipShown}]">
+      <div class="notification">
+        <notification
+        :text="tooltipText"
+        :type="tooltipType"
+        @click="hideTooltip"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import headline from "./components/headline/headline";
-import user from "./components/user/user";
-import navigation from "./components/navigation";
-import iconedBtn from "./components/button/types/iconedBtn";
-import category from "./components/category";
+import notification from "./components/notification";
+import {mapState, mapActions} from "vuex";
 
 export default {
   components: {
-    user,
-    headline,
-    navigation,
-    iconedBtn,
-    category
+    notification
   },
-  data() {
-    return {
-      categories: [],
-      emptyCatIsShown: false
-    }
+  computed: {
+    ...mapState("tooltips", {
+      isTooltipShown: (state) => state.isShown,
+      tooltipText: (state) => state.text,
+      tooltipType: (state) => state.type,
+    }),
   },
-  created() {
-    this.categories = require("./data/categories.json")
-  }
+  methods: {
+    ...mapActions({
+      hideTooltip: "tooltips/hide"
+    })
+  },
 }
 </script>
 
@@ -69,4 +44,4 @@ export default {
 @import "../styles/layout/base.pcss";
 </style>
 
-<style lang="postcss" scoped src="./app.pcss"></style>
+<style lang="postcss" src="./app.pcss"></style>

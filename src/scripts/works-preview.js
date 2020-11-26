@@ -1,4 +1,8 @@
 import Vue from "vue";
+import axios from "axios"
+import config from "../../env.paths.json"
+
+axios.defaults.baseURL = config.BASE_URL
 
 const thumbs = {
     props: ["currentWork", "works"],
@@ -59,7 +63,7 @@ const info = {
     },
     computed: {
         tagsArray() {
-            return this.currentWork.skills.split(", ")
+            return this.currentWork.techs.split(", ")
         }
     },
 }
@@ -73,7 +77,13 @@ new Vue({
     },
     data() {
         return {
-            works: [],
+            works: [{
+                title: '',
+                link: '',
+                description: '',
+                techs: '',
+                photo: ''
+            }],
             currentIndex: 0,
             worksCount: 0
         }
@@ -84,9 +94,9 @@ new Vue({
         }
     },
     methods: {
-        requireImagesToArray(data) {
+        fixImagesSrc(data) {
             return data.map(item => {
-                item.photo = require(`../images/content/${item.photo}`).default;
+                item.photo = `${config.BASE_URL}/${item.photo}`;
                 return item;
             });
         },
@@ -105,9 +115,9 @@ new Vue({
             this.currentIndex = slideId - 1;
         },
     },
-    created() {
-        const data = require("../data/works.json");
-        this.works = this.requireImagesToArray(data);
+    async created() {
+        const {data} = await axios.get("/works/" + config.USER_ID);
+        this.works = this.fixImagesSrc(data);
         this.worksCount = this.works.length
     },
 });

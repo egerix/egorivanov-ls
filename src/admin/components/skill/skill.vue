@@ -1,10 +1,10 @@
 <template>
-  <div class="skill-component" v-if="editmode === false">
+  <div class="skill-component" v-if="currentSkill.editmode === false">
     <div class="title">{{ skill.title }}</div>
     <div class="percent">{{ skill.percent }}</div>
     <div class="buttons">
-      <icon symbol="pencil" class="btn" @click="editmode = true" grayscale/>
-      <icon symbol="trash" class="btn" @click="$emit('remove', skill.id)" grayscale/>
+      <icon symbol="pencil" class="btn" @click="currentSkill.editmode = true" grayscale/>
+      <icon symbol="trash" class="btn" @click="$emit('remove', skill)" grayscale/>
     </div>
   </div>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="buttons">
       <icon symbol="tick" class="btn" @click="approveClick"/>
-      <icon symbol="cross" class="btn" @click="editmode = false"/>
+      <icon symbol="cross" class="btn" @click="currentSkill.editmode = false"/>
     </div>
   </div>
 </template>
@@ -60,11 +60,12 @@ export default {
   },
   data() {
     return {
-      editmode: false,
       currentSkill: {
-        id: 0,
+        id: this.skill.id,
         title: this.skill.title,
-        percent: this.skill.percent
+        percent: this.skill.percent,
+        category: this.skill.category,
+        editmode: false
       }
     };
   },
@@ -75,9 +76,9 @@ export default {
   methods: {
     approveClick() {
       this.$validate().then((success) => {
-        if (success) {
-          this.$emit('approve', this.currentSkill)
-        }
+        if (!success) return
+        this.$emit('approve', this.currentSkill)
+        this.validation.reset()
       });
     }
   }

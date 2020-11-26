@@ -1,7 +1,9 @@
 import Vue from "vue";
 import {Swiper, SwiperSlide} from "vue-awesome-swiper";
+import axios from "axios"
+import config from "../../env.paths.json"
 
-console.log('this is the reviews module');
+axios.defaults.baseURL = config.BASE_URL
 
 new Vue({
     el: "#reviews-component",
@@ -49,9 +51,9 @@ new Vue({
         })
     },
     methods: {
-        requireImagesToArray(data) {
+        fixImagesSrc(data) {
             return data.map(item => {
-                item.photo = require(`../images/content/${item.photo}`).default;
+                item.photo = `${config.BASE_URL}/${item.photo}`;
                 return item;
             });
         },
@@ -68,7 +70,8 @@ new Vue({
             }
         }
     },
-    created() {
-        this.reviews = this.requireImagesToArray(require("../data/reviews.json"))
+    async created() {
+        const {data} = await axios.get("/reviews/" + config.USER_ID)
+        this.reviews = this.fixImagesSrc(data)
     }
 });

@@ -1,5 +1,5 @@
 import category from "./category";
-import { action } from "@storybook/addon-actions";
+import {action} from "@storybook/addon-actions";
 
 const methods = {
     onRemove: action("onRemove"),
@@ -27,8 +27,8 @@ export const defaultView = () => ({
     },
     template: `
       <category
+          :category="{category: 'Frontend', skills}"
           :title="title"
-          :skills="skills"
           @remove="onRemove"
           @remove-skill="onRemoveSkill"
           @edit-skill="onEditSkill"

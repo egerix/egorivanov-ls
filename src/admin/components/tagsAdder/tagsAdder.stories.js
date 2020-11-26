@@ -28,3 +28,24 @@ defaultView.story = {
         ],
     },
 };
+
+export const errorView = () => ({
+    components: { tagsAdder },
+    data() {
+        return {
+            tags: ""
+        }
+    },
+    template: `        
+      <tags-adder v-model="tags" error-message='ERROR'/>
+    `
+});
+
+errorView.story = {
+    name: "Вывод ошибки вид",
+    parameters: {
+        backgrounds: [
+            { name: 'grey', value: '#8395a7', default: true },
+        ],
+    },
+};

@@ -1,12 +1,45 @@
 @import "../styles/mixins.pcss";
 
+.container {
+    max-width: 1080px;
+}
+
 .app-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.header {
+.notification {
+    transition: transform .3s;
+}
+
+.notify-container {
+    position: fixed;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &.active {
+        .notification {
+            transform: translateY(-100%);
+        }
+    }
+}
+.app-content {
+    padding: 60px 0 20px;
+    background: url("~images/bg/admin.jpg") center center / cover no-repeat;
+    flex: 1;
+}
+
+.page-title {
+    margin-right: 60px;
+    font-size: 21px;
+    font-weight: bold;
+    color: $text-color;
+}
+
+.page-header {
     display: flex;
     margin-bottom: 60px;
     @include tablets {
@@ -15,32 +48,4 @@
         flex-direction: column;
         margin-bottom: 40px;
     }
-}
-
-.page-content {
-    padding: 60px 0 20px;
-    background: url("../images/bg/admin.jpg") center center / cover no-repeat;
-    flex: 1;
-}
-
-.title {
-    margin-right: 60px;
-    font-size: 21px;
-    font-weight: bold;
-    color: $text-color;
-}
-
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-
-    @include tablets {
-        flex-direction: column;
-    }
-}
-
-.item {
-    flex-basis: calc(100%/2 - 30px);
-    margin-right: 30px;
-    margin-bottom: 30px;
 }
