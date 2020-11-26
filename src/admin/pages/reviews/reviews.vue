@@ -41,6 +41,11 @@ export default {
     ...mapState("reviews", {
       reviews: (state) => state.data,
     }),
+    ...mapState("user", {
+      userId: state => {
+        return state.user.id
+      }
+    }),
     ...mapGetters('reviews', ['reviewIsExist'])
   },
   data: () => ({
@@ -103,8 +108,7 @@ export default {
     }
   },
   mounted() {
-    console.log("MOU")
-    this.fetchReviewsAction();
+    this.fetchReviewsAction(this.userId);
   }
 };
 </script>

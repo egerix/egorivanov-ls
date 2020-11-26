@@ -42,6 +42,11 @@ export default {
     ...mapState("works", {
       works: (state) => state.data,
     }),
+    ...mapState("user", {
+      userId: state => {
+        return state.user.id
+      }
+    }),
     ...mapGetters('works', ['workIsExist'])
   },
   data: () => ({
@@ -106,7 +111,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchWorksAction();
+    this.fetchWorksAction(this.userId);
   }
 };
 </script>

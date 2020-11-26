@@ -38,9 +38,9 @@ export default {
                 throw Error(error)
             }
         },
-        async fetch({commit}) {
+        async fetch({commit}, userId) {
             try {
-                const {data} = await this.$axios.get("/works/420");
+                const {data} = await this.$axios.get("/works/" + userId);
                 commit("SET_WORKS", data);
             } catch (error) {
                 throw Error(error)
