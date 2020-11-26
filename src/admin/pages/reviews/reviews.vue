@@ -91,19 +91,19 @@ export default {
     async addReview(review) {
       await showTooltipOnSuccess(
           this.addNewReviewAction(review),
-          `Работа '${review.title}' добавлена`
+          `Отзыв от '${review.author}' добавлен`
       )
     },
     async updateReview(review) {
       await showTooltipOnSuccess(
           this.updateReviewAction(review),
-          `Работа '${review.title}' изменена`
+          `Отзыв от '${review.author}' изменен`
       )
     },
     async deleteReview(review) {
       await showTooltipOnSuccess(
           this.deleteReviewAction(review.id),
-          `Работа '${review.title}' удалена`
+          `Отзыв от '${review.author}' удален`
       )
     }
   },

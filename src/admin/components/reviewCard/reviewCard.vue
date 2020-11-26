@@ -3,7 +3,7 @@
       <header slot="title">
         <div class="user">
           <div class="user__pic-wrapper">
-            <img class="user-min__avatar-pic" :src="review.photo" alt="Avatar"/>
+            <img class="user-min__avatar-pic" :src="cover" alt="Avatar"/>
           </div>
           <div class="user__info">
             <div class="user__name">{{ review.author }}</div>
