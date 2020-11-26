@@ -54,7 +54,6 @@ export default {
   computed: {
     ...mapState("categories", {
       categories: state => {
-        console.log("CATS");
         return state.data
       }
     }),

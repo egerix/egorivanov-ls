@@ -1,0 +1,52 @@
+.reviewsForm-cols {
+    display: flex;
+}
+
+.reviewsForm-col {
+    width: 50%;
+    margin-right: 30px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.reviewsForm-row {
+    margin-bottom: 30px;
+}
+
+.reviewsForm-btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-photo {
+    width: 200px;
+    height: 200px;
+    border: none;
+    border-radius: 50%;
+    background-image: svg-load("user.svg", fill=#fff);
+    background-repeat: no-repeat;
+    background-color: #DEE4ED;
+    background-size: 60%;
+    background-position: center;
+
+    &.uploaded {
+        background-size: 100%;
+    }
+}
+
+.uploader-title {
+    color: $text-color;
+    opacity: .5;
+    margin-bottom: 30px;
+}
+
+.btn {
+    margin-right: 10px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+

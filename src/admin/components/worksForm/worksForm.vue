@@ -1,7 +1,7 @@
 <template>
   <div class="worksForm-component">
     <form class="worksForm" @submit.prevent="handleSubmit">
-      <card title="Добавление работы">
+      <card title="Редактирование работы">
         <div class="worksForm-container" slot="content">
           <div class="worksForm-cols">
             <div class="worksForm-col">

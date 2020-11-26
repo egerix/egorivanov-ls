@@ -9,6 +9,8 @@ import about from "./pages/about"
 import login from "./pages/login"
 import works from "./pages/works"
 import pagesHeader from "./components/pagesHeader";
+import reviewCard from "./components/reviewCard";
+import reviews from "./pages/reviews";
 
 const routes = [
     {
@@ -22,6 +24,13 @@ const routes = [
         path: "/works",
         components: {
             default: works,
+            header: pagesHeader
+        },
+    },
+    {
+        path: "/reviews",
+        components: {
+            default: reviews,
             header: pagesHeader
         },
     },
