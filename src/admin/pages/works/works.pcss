@@ -1,14 +1,28 @@
+@import "../../../../src/styles/mixins.pcss";
+
 .cards {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -20px;
-  margin-top: -20px;
+  margin-left: -28px;
+  margin-top: -28px;
+
+  @include desktop {
+    justify-content: center;
+  }
 }
 
 .item {
-  width: calc(100% / 3 - 20px);
-  margin-top: 20px;
-  margin-left: 20px;
+  width: calc(100% / 3 - 28px);
+  margin-top: 28px;
+  margin-left: 28px;
+  @include desktop {
+    width: calc(100% / 2 - 28px);
+    max-width: 340px;
+  }
+
+  @include tablets {
+    width: 100%;
+  }
 }
 
 .form {

@@ -4,29 +4,31 @@
       <card title="Новый отзыв">
         <div class="reviewsForm-container" slot="content">
           <div class="reviewsForm-cols">
-            <div class="reviewsForm-col">
+            <div class="reviewsForm-photo-col">
               <div
                   :style="reviewerPhoto ? {backgroundImage: `url(${reviewerPhoto})`} : ''"
                   :class="['user-photo', {uploaded: reviewerPhoto}]"
               />
-              <app-button typeAttr="file" :title="reviewerPhoto ? 'Изменить фото' : 'Добавить фото'"
-                          plain @change="handleChange"></app-button>
+              <div class="photoBtn">
+                <app-button type="default" plain typeAttr="file"
+                            :title="reviewerPhoto ? 'Изменить фото' : 'Добавить фото'"
+                            @change="handleChange"></app-button>
+              </div>
               <tooltip
                   v-if="validation.hasError('newReview.photo')"
                   :text="validation.firstError('newReview.photo')"
               />
             </div>
-            <div class="reviewsForm-col">
+            <div class="reviewsForm-data-col">
+
               <div class="reviewsForm-row">
-                <app-input v-model="newReview.author" title="Имя автора"
+                <app-input class="reviewsForm-row__item" v-model="newReview.author" title="Имя автора"
                            :error-message="validation.firstError('newReview.author')"/>
-              </div>
-              <div class="reviewsForm-row">
-                <app-input v-model="newReview.occ" title="Титул автора"
+                <app-input class="reviewsForm-row__item" v-model="newReview.occ" title="Титул автора"
                            :error-message="validation.firstError('newReview.occ')"/>
               </div>
               <div class="reviewsForm-row">
-                <app-input v-model="newReview.text"
+                <app-input class="reviewsForm-row__item" v-model="newReview.text"
                            field-type="textarea"
                            title="Отзыв"
                            :error-message="validation.firstError('newReview.text')"

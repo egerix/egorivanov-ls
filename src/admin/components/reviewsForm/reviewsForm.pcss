@@ -1,23 +1,49 @@
+@import "../../../../src/styles/mixins.pcss";
+
 .reviewsForm-cols {
     display: flex;
+    @include tablets {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
-.reviewsForm-col {
-    width: 50%;
+.reviewsForm-photo-col {
     margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    &:last-child {
-        margin-right: 0;
-    }
+.reviewsForm-data-col {
+    flex: 1;
+    max-width: 612px;
 }
 
 .reviewsForm-row {
     margin-bottom: 30px;
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-left: -30px;
+    @include tablets {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.reviewsForm-row__item {
+    margin-left: 30px;
+    flex: 1;
 }
 
 .reviewsForm-btns {
     display: flex;
     justify-content: flex-end;
+}
+
+.photoBtn {
+    padding-top: 10px;
 }
 
 .user-photo {
