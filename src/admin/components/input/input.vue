@@ -28,7 +28,7 @@
       :class="{'error' : !!errorMessage}"
       @input="$emit('input', $event.target.value)"
     ></textarea>
-    <div class="input__error-tooltip">
+    <div class="input__error-tooltip input__error-tooltip--textarea">
       <tooltip :text="errorMessage"></tooltip>
     </div>
   </label>
